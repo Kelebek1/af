@@ -14,9 +14,9 @@
 // void func_800BD4E8_jp();
 // void _texture_z_light_fog_prim_shadow();
 // void func_800BD538_jp();
-// void func_800BD598_jp();
+void func_800BD598_jp(struct GraphicsContext* gfxCtx);
 // void func_800BD5C0_jp();
-// void func_800BD5E8_jp();
+void func_800BD5E8_jp(struct GraphicsContext* gfxCtx);
 // void func_800BD648_jp();
 // void func_800BD68C_jp();
 // void func_800BD6D0_jp();

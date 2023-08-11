@@ -3,7 +3,7 @@
 
 #include "ultra64.h"
 
-// void mem_copy();
+void mem_copy(void* dst, void* src, u32 size);
 // void mem_clear();
 // void mem_cmp();
 f32 cos_s(s16 angle);
@@ -20,7 +20,7 @@ f32 sin_s(s16 angle);
 // void stick_ratio_set();
 // void get_random_timer();
 // void get_random_pattern_timer();
-// void xyz_t_move();
+void xyz_t_move(Vec3f*, Vec3f*);
 // void xyz_t_move_s_xyz();
 // void xyz_t_add();
 // void xyz_t_sub();
@@ -52,7 +52,7 @@ f32 sin_s(s16 angle);
 // void add_calc_short_angle3();
 // void adds();
 // void rgba_t_move();
-// void none_proc1();
+void none_proc1();
 // void none_proc2();
 // void Cheap_gfx_display();
 // void Cheap_gfx_display_xlu();

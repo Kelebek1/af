@@ -4,7 +4,7 @@
 #include "ultra64.h"
 
 // void U_GetAtanTable();
-// void atans_table();
+s16 atans_table(f32, f32);
 // void atanf_table();
 
 #endif

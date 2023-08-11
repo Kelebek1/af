@@ -3464,9 +3464,9 @@
     compress: True
     bss_size: 0x0
     subsegments:
-      - [0x8E8270, asm, overlays/actors/ovl__008E8270/ovl__008E8270]
-      - [0x8E86A0, data, overlays/actors/ovl__008E8270/ovl__008E8270]
-      - [0x8E86D0, rodata, overlays/actors/ovl__008E8270/ovl__008E8270]
+      - [0x8E8270, c, overlays/actors/ovl__008E8270/ovl__008E8270]
+      - [0x8E86A0, .data, overlays/actors/ovl__008E8270/ovl__008E8270]
+      - [0x8E86D0, .rodata, overlays/actors/ovl__008E8270/ovl__008E8270]
   - name: ovl__008E8270_reloc
     type: code
     start: 0x8E86E0

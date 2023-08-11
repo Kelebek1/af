@@ -15,6 +15,6 @@
 // void func_80055214_jp();
 // void func_80055248_jp();
 // void func_800554D8_jp();
-// void Evw_Anime_Set();
+void Evw_Anime_Set(PlayState* play, void* arg1);
 
 #endif
