@@ -17,6 +17,7 @@
 #define ARRAY_COUNTU(arr) (u32)(sizeof(arr) / sizeof(arr[0]))
 
 #define ABS(x) (((x) >= 0) ? (x): -(x))
+#define ABS_ALT(x) ((x) < 0 ? -(x) : (x))
 
 #define CLAMP(x, min, max) ((x) < (min) ? (min) : (x) > (max) ? (max) : (x))
 

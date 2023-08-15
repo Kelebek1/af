@@ -32,8 +32,10 @@ Gfx* func_800BD7C0_jp(Gfx* gfx);
 // void func_800BD8A8_jp();
 // void func_800BD9D8_jp();
 // void func_800BD9FC_jp();
-// void func_800BDA20_jp();
-// void two_tex_scroll();
+s32 func_800BDA20_jp(GraphicsContext* gfxCtx, s32 x, s32 y, s32 width, s32 height);
+s32 two_tex_scroll(GraphicsContext* gfxCtx, 
+                   s32 tile1, u32 x1, u32 y1, s32 width1, s32 height1, 
+                   s32 tile2, u32 x2, u32 y2, s32 width2, s32 height2);
 void DisplayList_initialize(GraphicsContext* gfxCtx, u8 arg1, u8 arg2, u8 arg3, struct Game_Play* game_play);
 void fade_rgba8888_draw(Gfx** gfx, s32 arg1);
 // void func_800BE030_jp();

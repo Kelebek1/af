@@ -7,7 +7,7 @@
 #include "THA_GA.h"
 #include "unk.h"
 
-#define GRAPH_ALLOC(gfxCtx, size) ((void*)((gfxCtx)->polyOpa.d = (Gfx*)((u8*)(gfxCtx)->polyOpa.d - ALIGN16(size))))
+#define GRAPH_ALLOC(gfxCtx, size) ((void*)((gfxCtx)->polyOpa.d = (Gfx*)((u8*)(gfxCtx)->polyOpa.d - ALIGN8(size))))
 
 typedef struct GraphicsContext {
     /* 0x000 */ UNK_TYPE1 unk_000[0x8];

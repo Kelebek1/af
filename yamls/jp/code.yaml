@@ -7,7 +7,7 @@
     bss_size: 0x36C90
     subsegments:
       - [0x675720, c, code/c_keyframe]
-      - [0x678660, asm, code/evw_anime]
+      - [0x678660, c, code/evw_anime]
       - [0x6792F0, asm, code/6792F0]
       - [0x67A020, c, code/m_actor]
       - [0x67C6B0, c, code/m_actor_dlftbls]
@@ -133,7 +133,8 @@
 
       - [0x723010, data, code/rsp/723010]
 
-      - [0x7248D0, data, code/7248D0]
+      - [0x7248D0, .data, code/evw_anime]
+      - [0x7248F0, data, code/7248F0]
       - [0x724910, .data, code/m_actor]
       - [0x724930, .data, code/m_actor_dlftbls]
       - [0x726260, data, code/m_actor_shadow]
