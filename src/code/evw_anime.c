@@ -6,22 +6,22 @@
 #include "6E0F50.h"
 
 s32 func_800549C0_jp(PlayState* play, EvwAnimeScroll* scroll) {
-    return func_800BDA20_jp(play->state.gfxCtx, scroll->x * play->game_frame, -(scroll->y * play->game_frame), scroll->width, scroll->height);
+    return func_800BDA20_jp(play->game.gfxCtx, scroll->x * play->game_frame, -(scroll->y * play->game_frame), scroll->width, scroll->height);
 }
 
 void func_80054A28_jp(PlayState* play, s32 arg1, void* scroll) {
     s32 temp_v0 = func_800549C0_jp(play, (EvwAnimeScroll*)scroll);
 
-    OPEN_DISPS(play->state.gfxCtx);
+    OPEN_DISPS(play->game.gfxCtx);
 
     gSPSegment(POLY_OPA_DISP++, arg1, temp_v0);
     gSPSegment(POLY_XLU_DISP++, arg1, temp_v0);
 
-    CLOSE_DISPS(play->state.gfxCtx);
+    CLOSE_DISPS(play->game.gfxCtx);
 }
 
 s32 func_80054A94_jp(PlayState* play, EvwAnimeScroll* scrolls) {
-    return two_tex_scroll(play->state.gfxCtx, 0, 
+    return two_tex_scroll(play->game.gfxCtx, 0, 
                       scrolls[0].x * play->game_frame, -(scrolls[0].y * play->game_frame), 
                       scrolls[0].width, scrolls[0].height, 1, 
                       scrolls[1].x * play->game_frame, -(scrolls[1].y * play->game_frame), 
@@ -31,27 +31,27 @@ s32 func_80054A94_jp(PlayState* play, EvwAnimeScroll* scrolls) {
 void func_80054B44_jp(PlayState* play, s32 arg1, void* scrolls) {
     s32 temp_v0 = func_80054A94_jp(play, (EvwAnimeScroll*)scrolls);
 
-    OPEN_DISPS(play->state.gfxCtx);
+    OPEN_DISPS(play->game.gfxCtx);
 
     gSPSegment(POLY_OPA_DISP++, arg1, temp_v0);
     gSPSegment(POLY_XLU_DISP++, arg1, temp_v0);
 
-    CLOSE_DISPS(play->state.gfxCtx);
+    CLOSE_DISPS(play->game.gfxCtx);
 }
 
 void func_80054BB0_jp(PlayState* play, s32 arg1, EvwAnimeColPrim* prim, EvwAnimeColEnv* env) {
-    Gfx* alloc = (Gfx*)GRAPH_ALLOC(play->state.gfxCtx, sizeof(Gfx) * 3);
+    Gfx* alloc = (Gfx*)GRAPH_ALLOC(play->game.gfxCtx, sizeof(Gfx) * 3);
 
     gDPSetPrimColor(&alloc[0], 0, prim->l, prim->r, prim->g, prim->b, prim->a);
     gDPSetEnvColor(&alloc[1], env->r, env->g, env->b, env->a);
     gSPEndDisplayList(&alloc[2]);
 
-    OPEN_DISPS(play->state.gfxCtx);
+    OPEN_DISPS(play->game.gfxCtx);
 
     gSPSegment(POLY_OPA_DISP++, arg1, alloc);
     gSPSegment(POLY_XLU_DISP++, arg1, alloc);
 
-    CLOSE_DISPS(play->state.gfxCtx);
+    CLOSE_DISPS(play->game.gfxCtx);
 }
 
 void func_80054C88_jp(PlayState* play, s32 arg1, void* evw_data) {
@@ -227,12 +227,12 @@ void func_800554D8_jp(PlayState* play, s32 arg1, void* evw_data) {
     s32 frame = play->game_frame % tex_anime->frame_count;
     void* tex_p = Lib_SegmentedToVirtual(sp18[anim_pattern[frame]]);
 
-    OPEN_DISPS(play->state.gfxCtx);
+    OPEN_DISPS(play->game.gfxCtx);
 
     gSPSegment(POLY_OPA_DISP++, arg1, tex_p);
     gSPSegment(POLY_XLU_DISP++, arg1, tex_p);
 
-    CLOSE_DISPS(play->state.gfxCtx);
+    CLOSE_DISPS(play->game.gfxCtx);
 }
 
 typedef void (*EvwAnimeProc)(PlayState*, s32, void*);
