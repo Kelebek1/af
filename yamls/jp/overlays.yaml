@@ -1444,7 +1444,7 @@
     bss_size: 0x0
     subsegments:
       - [0x849B50, c, overlays/actors/ovl_Quest_Manager/ac_quest_manager]
-      - [0x84BF70, data, overlays/actors/ovl_Quest_Manager/ac_quest_manager]
+      - [0x84BF70, .data, overlays/actors/ovl_Quest_Manager/ac_quest_manager]
   - name: ovl_Quest_Manager_reloc
     type: code
     start: 0x84C8A0

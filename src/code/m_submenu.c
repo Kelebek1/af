@@ -461,8 +461,8 @@ void mSM_move_LINKWait(Submenu* submenu) {
     submenu->move = mSM_ovlptr_dllcnv(mSM_menu_ovl_init, submenu);
     submenu->draw = (void*)none_proc1;
     submenu->moveProcIndex = MSM_MOVE_PROC_PLAY;
-    submenu->unk_DC = 1;
-    submenu->unk_E0 = 0;
+    submenu->open_flag = 1;
+    submenu->item = 0;
     submenu->unk_DF = 0xF;
     submenu->unk_DD = 7;
     submenu->unk_DE = 0;
@@ -497,7 +497,7 @@ void mSM_move_End(Submenu* submenu) {
     submenu->moveProcIndex = MSM_MOVE_PROC_WAIT;
     submenu->programId = SUBMENU_PROGRAM_0;
     submenu->unk_20 = 2;
-    submenu->unk_DC = 0;
+    submenu->open_flag = 0;
 
     SetGameFrame(2);
 

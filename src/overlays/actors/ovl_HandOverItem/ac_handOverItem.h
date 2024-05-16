@@ -1,5 +1,5 @@
-#ifndef AC_HANDOVERITEM_H
-#define AC_HANDOVERITEM_H
+#ifndef AC_HANDOVERITEMACTOR_H
+#define AC_HANDOVERITEMACTOR_H
 
 #include "ultra64.h"
 #include "m_actor.h"

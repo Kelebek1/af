@@ -85,11 +85,11 @@ typedef struct Submenu {
     /* 0x30 */ SubmenuMoveFunc move;
     /* 0x34 */ SubmenuDrawFunc draw;
     /* 0x38 */ Mail_c mail;
-    /* 0xDC */ u8 unk_DC;
+    /* 0xDC */ u8 open_flag;
     /* 0xDD */ u8 unk_DD;
     /* 0xDE */ u8 unk_DE;
     /* 0xDF */ u8 unk_DF;
-    /* 0xE0 */ u16 unk_E0;
+    /* 0xE0 */ u16 item;
     /* 0xE2 */ u8 unk_E2;
     /* 0xE3 */ u8 unk_E3;
     /* 0xE4 */ xyz_t unk_E4;

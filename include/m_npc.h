@@ -50,7 +50,7 @@ typedef struct NpcList {
     /* 0x1C */ u8 appearFlag;
     /* 0x1D */ NpcListFlags flags;
     /* 0x1F */ u8 unk1F; 
-    /* 0x20 */ QuestBase questInfo;
+    /* 0x20 */ mQst_base_c questInfo;
     /* 0x2C */ NpcHouseData houseData;
     /* 0x34 */ u16 rewardFurniture;
 } NpcList; // size = 0x38
@@ -122,9 +122,9 @@ typedef struct Animal_c {
     /* 0x4E0 */ Anmhome_c homeInfo;
     /* 0x4E5 */ char catchphrase[ANIMAL_CATCHPHRASE_LEN];
     /* 0x4E9 */ char unk4E9[0x3];
-    /* 0x4EC */ QuestContest contestQuest;
-    /* 0x4E9 */ char previousLandName[LAND_NAME_SIZE];
-    /* 0x4E9 */ char parentName[ANIMAL_NAME_LEN]; 
+    /* 0x4EC */ mQst_contest_c contestQuest;
+    /* 0x510 */ char previousLandName[LAND_NAME_SIZE];
+    /* 0x516 */ char parentName[ANIMAL_NAME_LEN]; 
     /* 0x51C */ u16 previousLandId;
     /* 0x51E */ u8 mood;
     /* 0x51F */ u8 moodTime;

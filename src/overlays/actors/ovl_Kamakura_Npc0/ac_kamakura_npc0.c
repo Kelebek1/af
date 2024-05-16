@@ -8,9 +8,9 @@ void aKM0_actor_ct(Actor* thisx, Game_Play* game_play);
 void aKM0_actor_dt(Actor* thisx, Game_Play* game_play);
 void aKM0_actor_init(Actor* thisx, Game_Play* game_play);
 void aKM0_actor_save(Actor* thisx, Game_Play* game_play);
-void aKM0_talk_request(UNK_TYPE arg0, UNK_TYPE arg1);
-void aKM0_talk_init(UNK_TYPE arg0, UNK_TYPE arg1);
-s32 aKM0_talk_end_chk(UNK_TYPE arg0, UNK_TYPE arg1);
+void aKM0_talk_request(Actor* arg0, UNK_TYPE arg1);
+void aKM0_talk_init(Actor* arg0, UNK_TYPE arg1);
+s32 aKM0_talk_end_chk(Actor* arg0, UNK_TYPE arg1);
 void aKM0_actor_move(void);
 void aKM0_actor_draw(void);
 
@@ -51,19 +51,19 @@ void aKM0_actor_init(Actor* thisx, Game_Play* game_play) {
     common_data.clip.unk_040->unk_CC(thisx, game_play);
 }
 
-void aKM0_talk_request(UNK_TYPE arg0, UNK_TYPE arg1 UNUSED) {
-    common_data.clip.unk_06C->unk_00(arg0);
+void aKM0_talk_request(Actor* arg0, UNK_TYPE arg1 UNUSED) {
+    common_data.clip.quest_manager->talk_request_proc(arg0);
 }
 
-void aKM0_talk_init(UNK_TYPE arg0, UNK_TYPE arg1 UNUSED) {
-    common_data.clip.unk_06C->unk_04(arg0);
+void aKM0_talk_init(Actor* arg0, UNK_TYPE arg1 UNUSED) {
+    common_data.clip.quest_manager->talk_start_proc(arg0);
 }
 
-s32 aKM0_talk_end_chk(UNK_TYPE arg0, UNK_TYPE arg1 UNUSED) {
+s32 aKM0_talk_end_chk(Actor* arg0, UNK_TYPE arg1 UNUSED) {
     s32 var_v1;
 
     var_v1 = false;
-    if (common_data.clip.unk_06C->unk_08(arg0) == 1) {
+    if (common_data.clip.quest_manager->talk_check_proc(arg0) == 1) {
         var_v1 = true;
     }
     return var_v1;

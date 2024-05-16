@@ -19,6 +19,6 @@ void mMld_SetDefaultMelody(void);
 // void func_8009D100_jp();
 // void func_8009D128_jp();
 // void func_8009D160_jp();
-// void func_8009D1A8_jp();
+void mMld_ActorMakeMelody(Actor* actor);
 
 #endif

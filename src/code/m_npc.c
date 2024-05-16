@@ -1078,7 +1078,7 @@ s32 mNpc_SendMailtoNpc(Mail_c* mail) {
             cond = mNpc_SetRemailCond(animal, memory, mail->content.body);
             fakeTemp = 0xFF;
             if (mEv_CheckFirstJob() == TRUE) {
-                QuestErrand* firstJob = mQst_GetFirstJobData();
+                mQst_errand_c* firstJob = mQst_GetFirstJobData();
 
                 if ((firstJob->base.questKind == 6 || firstJob->base.questKind == 10) && firstJob->base.progress != 0) {
                     firstJob->base.progress = 3;

@@ -3,14 +3,26 @@
 
 #include "ultra64.h"
 
-// void func_80065040_jp();
+#define mChoice_CHOICE_STRING_LEN 10
+#define mChoice_SELECT_STR_NUM 607
+
+enum mChoice_Choice {
+  /* 0 */ mChoice_CHOICE0,
+  /* 1 */ mChoice_CHOICE1,
+  /* 2 */ mChoice_CHOICE2,
+  /* 3 */ mChoice_CHOICE3,
+  /* 4 */ mChoice_CHOICE_NUM,
+};
+
+UNK_PTR mChoice_Get_base_window_p(void);
 // void func_80065064_jp();
 // void func_80065158_jp();
 // void func_80065164_jp();
 // void func_80065170_jp();
 // void func_80065198_jp();
 // void func_800651A4_jp();
-// void func_80065278_jp();
+void mChoice_Set_choice_data(UNK_PTR choice, u8* str0, s32 str0_len, u8* str1, s32 str1_len, u8* str2,
+                                    s32 str2_len, u8* str3, s32 str3_len);
 // void func_80065348_jp();
 // void func_800653CC_jp();
 // void func_800653DC_jp();
@@ -60,7 +72,7 @@
 // void func_80065C7C_jp();
 // void func_80065CA0_jp();
 // void func_80065CF8_jp();
-// void func_80065D90_jp();
+void mChoice_Load_ChoseStringFromRom(UNK_PTR choice, u8* str, s32 str_no, Actor* actor);
 // void func_80065EE8_jp();
 // void func_80065EF8_jp();
 // void func_80065F18_jp();

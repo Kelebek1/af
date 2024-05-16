@@ -51,7 +51,7 @@ typedef struct PrivateInfo {
     /* 0x013 */ MuseumRecord museumRecord;
     /* 0x014 */ PrivateInventory inventory;
     /* 0x040 */ mQst_delivery_c deliveries[mPr_DELIVERY_QUEST_NUM]; /* delivery quests */
-    /* 0x25C */ QuestErrand errands[mPr_ERRAND_QUEST_NUM]; /* errand quests */
+    /* 0x25C */ mQst_errand_c errands[mPr_ERRAND_QUEST_NUM]; /* errand quests */
     /* 0x3EC */ UNK_TYPE1 unk_3EC[0x2];
     /* 0x3EE */ MailHeaderCommon savedMailHeader;
     /* 0x40A */ Mail_c mail[mPr_INVENTORY_MAIL_COUNT];

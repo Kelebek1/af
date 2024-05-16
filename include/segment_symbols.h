@@ -33,6 +33,7 @@
 #define SEGMENT_VRAM_END(segment)   (segment ## _VRAM_END)
 #define SEGMENT_VRAM_SIZE(segment)  ((uintptr_t)SEGMENT_VRAM_END(segment) - (uintptr_t)SEGMENT_VRAM_START(segment))
 #define SEGMENT_VRAM_RESOLVE_ADDR(segment, base, symbol) ((uintptr_t)(base) + (uintptr_t)&(symbol) - (uintptr_t)SEGMENT_VRAM_START(segment))
+#define SEGMENT_VRAM_RESOLVE_ADDR2(segment, base, symbol) ((uintptr_t)(base) + (uintptr_t)(symbol) - (uintptr_t)segment)
 
 #define SEGMENT_ROM_START(segment) ((RomOffset)segment ## _ROM_START)
 #define SEGMENT_ROM_END(segment)   ((RomOffset)segment ## _ROM_END)
@@ -94,6 +95,10 @@ DECLARE_SEGMENT(ovl__0079E430);
 DECLARE_SEGMENT(ovl__0079F810);
 DECLARE_SEGMENT(ovl__007A10E0);
 DECLARE_SEGMENT(catalog_ovl);
+DECLARE_SEGMENT(ovl__008108C0);
+DECLARE_SEGMENT(ovl__00814FA0);
+DECLARE_SEGMENT(ovl__00815B70);
+DECLARE_SEGMENT(ovl__00824500);
 
 DECLARE_SEGMENT(ac_set_ovl_insect);
 DECLARE_SEGMENT(ac_set_ovl_gyoei);

@@ -172,7 +172,7 @@ void func_800B594C_jp(void);
 // void func_800B5D34_jp();
 // void func_800B5DA8_jp();
 // void func_800B5DEC_jp();
-// void func_800B5E30_jp();
+s32 mPlib_check_player_actor_main_index_RecieveMove(Game* game);
 // void func_800B5EA4_jp();
 // void func_800B5F18_jp();
 // void func_800B5FD0_jp();

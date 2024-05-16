@@ -23,7 +23,7 @@ void mLd_ClearLandName(char* name);
 void mLd_CopyLandName(char* arg0, char* arg1);
 // void func_80094F24_jp();
 // void func_80094F84_jp();
-// void func_8009504C_jp();
+void mLd_SetFreeStrLandMuraName(char* name, s32 free_str_no);
 char* mLd_GetLandName(void);
 // void func_800950E8_jp();
 s32 mLd_PlayerManKindCheckNo(u8 playerNumber);

@@ -4,6 +4,94 @@
 #include "ultra64.h"
 #include "unk.h"
 
+/**
+ * Event type definition
+ *  xxxyyyyy yyyyyyyy yyyyyyyy yyyyyyyy
+ *
+ *  x: event type (e.g. special event, 'first job' (chores) event, holidays, ...) (0-7)
+ *  y: sub-type (specific event)
+ **/
+
+#define mEv_SUBTYPE_BITS 29
+#define mEv_TYPE_BITMASK (7 << mEv_SUBTYPE_BITS)
+#define mEv_SUBTYPE_BITMASK ((1 << mEv_SUBTYPE_BITS) - 1)
+
+#define mEv_GET_TYPE(event) (((event) & mEv_TYPE_BITMASK) >> mEv_SUBTYPE_BITS)
+#define mEv_SET_TYPE(t) (((t) << mEv_SUBTYPE_BITS) & mEv_TYPE_BITMASK)
+
+#define mEv_GET_SUBTYPE(event) ((event) & mEv_SUBTYPE_BITMASK)
+#define mEv_SET_SUBTYPE(s) ((s) & mEv_SUBTYPE_BITMASK)
+
+#define mEv_SET(type, subtype) (mEv_SET_TYPE(type) | mEv_SET_TYPE(subtype))
+
+enum mEv_EventType {
+    /* 0 */ mEv_SPNPC_EVENT, /* special NPC events */
+    /* 1 */ mEv_SAVED_EVENT, /* events saved to data */
+    /* 2 */ mEv_TYPE2_EVENT, /* unused? */
+    /* 3 */ mEv_TYPE3_EVENT, /* unused? */
+    /* 4 */ mEv_TYPE4_EVENT, /* unused? */
+    /* 5 */ mEv_DAILY_EVENT, /* checked daily always? aSL_ReportShopOpen2Event has event 3 */
+    /* 6 */ mEv_SPECL_EVENT, /* ??? secondary special npc event data? */
+    /* 7 */ mEv_EVENT_TYPE_NUM,
+};
+
+enum mEv_Events {
+    /* 0x00000000 */ mEv_SPNPC_SHOP = (s32)mEv_SET(mEv_SPNPC_EVENT, 0),
+    /* 0x00000001 */ mEv_SPNPC_DESIGNER,
+    /* 0x00000002 */ mEv_SPNPC_BROKER,
+    /* 0x00000003 */ mEv_SPNPC_ARTIST,
+    /* 0x00000004 */ mEv_SPNPC_ARABIAN,
+    /* 0x00000005 */ mEv_SPNPC_GYPSY,
+    /* 0x00000006 */ mEv_SPNPC_END,
+
+    /* 0x20000000 */ mEv_SAVED_RENEWSHOP = (s32)mEv_SET(mEv_SAVED_EVENT, 0), /* renew shop */
+    /* 0x20000001 */ mEv_SAVED_UNK1,                                         /* unused */
+
+    /* intro through chores */
+    /* 0x20000002 */ mEv_SAVED_FIRSTJOB_PLR0,
+    /* 0x20000003 */ mEv_SAVED_FIRSTJOB_PLR1,
+    /* 0x20000004 */ mEv_SAVED_FIRSTJOB_PLR2,
+    /* 0x20000005 */ mEv_SAVED_FIRSTJOB_PLR3,
+
+    /* selecting house */
+    /* 0x20000006 */ mEv_SAVED_FIRSTINTRO_PLR0,
+    /* 0x20000007 */ mEv_SAVED_FIRSTINTRO_PLR1,
+    /* 0x20000008 */ mEv_SAVED_FIRSTINTRO_PLR2,
+    /* 0x20000009 */ mEv_SAVED_FIRSTINTRO_PLR3,
+
+    /* wait for next day to talk about HRA */
+    /* 0x2000000A */ mEv_SAVED_HRAWAIT_PLR0,
+    /* 0x2000000B */ mEv_SAVED_HRAWAIT_PLR1,
+    /* 0x2000000C */ mEv_SAVED_HRAWAIT_PLR2,
+    /* 0x2000000D */ mEv_SAVED_HRAWAIT_PLR3,
+
+    /* Nook will talk about HRA when entering the shop */
+    /* 0x2000000E */ mEv_SAVED_HRATALK_PLR0,
+    /* 0x2000000F */ mEv_SAVED_HRATALK_PLR1,
+    /* 0x20000010 */ mEv_SAVED_HRATALK_PLR2,
+    /* 0x20000011 */ mEv_SAVED_HRATALK_PLR3,
+
+    /* Do a 'favor' for a villager during chores */
+    /* 0x20000012 */ mEv_SAVED_FJOPENQUEST_PLR0,
+    /* 0x20000013 */ mEv_SAVED_FJOPENQUEST_PLR1,
+    /* 0x20000014 */ mEv_SAVED_FJOPENQUEST_PLR2,
+    /* 0x20000015 */ mEv_SAVED_FJOPENQUEST_PLR3,
+
+    /* Player going to another town, set at train station */
+    /* 0x20000016 */ mEv_SAVED_GATEWAY_PLR0,
+    /* 0x20000017 */ mEv_SAVED_GATEWAY_PLR1,
+    /* 0x20000018 */ mEv_SAVED_GATEWAY_PLR2,
+    /* 0x20000019 */ mEv_SAVED_GATEWAY_PLR3,
+    /* 0x2000001A */ mEv_SAVED_GATEWAY_FRGN, /* Foreigner */
+
+    /* 0xA0000000 */ mEv_DAILY_0 = (s32)mEv_SET(mEv_DAILY_EVENT, 0), /* unused */
+    /* 0xA0000001 */ mEv_DAILY_1,                                    /* unused */
+    /* 0xA0000002 */ mEv_DAILY_2,                                    /* unused */
+    /* 0xA0000003 */ mEv_DAILY_OPEN_SHOP,                            /* shop opened */
+
+    /* 0xC0000000 */ mEv_SPECL_DESIGNER_COMPLETE = (s32)mEv_SET(mEv_SPECL_EVENT, 0)
+};
+
 typedef struct EventSaveInfo {
     /* 0x00 */ char unk00[0x9C];
 } EventSaveInfo; // size >= 0x9C
@@ -25,7 +113,7 @@ void mEv_ClearEventSaveInfo(EventSaveInfo* eventSaveInfo);
 void mEv_ClearEventInfo(void);
 // void func_8007D25C_jp();
 // void func_8007D2B8_jp();
-// void func_8007D318_jp();
+s32 mEv_CheckEvent(u32 event);
 // void func_8007D36C_jp();
 // void func_8007D3F0_jp();
 // void func_8007D408_jp();

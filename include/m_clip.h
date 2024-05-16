@@ -58,15 +58,15 @@ typedef struct Clip_unk_040 {
     /* 0x118 */ Clip_unk_040_unk_118 unk_118;
 } Clip_unk_040; // size >= 0x11C
 
-typedef UNK_RET (*Clip_unk_06C_unk_00)(UNK_TYPE);
-typedef UNK_RET (*Clip_unk_06C_unk_04)(UNK_TYPE);
-typedef UNK_RET (*Clip_unk_06C_unk_08)(UNK_TYPE);
+typedef s32 (*TALK_REQUEST_PROC)(struct Actor*);
+typedef s32 (*TALK_START_PROC)(struct Actor*);
+typedef s32 (*TALK_CHECK_PROC)(struct Actor*);
 
-typedef struct Clip_unk_078 {
-    /* 0x00 */ Clip_unk_06C_unk_00 unk_00;
-    /* 0x04 */ Clip_unk_06C_unk_04 unk_04;
-    /* 0x08 */ Clip_unk_06C_unk_08 unk_08;
-} Clip_unk_06C; // size >= 0xC
+typedef struct ClipQuestManager {
+    /* 0x00 */ TALK_REQUEST_PROC talk_request_proc;
+    /* 0x04 */ TALK_START_PROC talk_start_proc;
+    /* 0x08 */ TALK_CHECK_PROC talk_check_proc;
+} ClipQuestManager; // size = 0xC
 
 typedef UNK_RET (*Clip_unk_074_unk_00)(UNK_TYPE);
 typedef void (*Clip_unk_074_unk_04)(struct Game_Play* game_play, struct ShadowData* shadowData, s16 unk2);
@@ -119,18 +119,24 @@ typedef struct Clip_unk_0D8 {
     /* 0x00 */ Clip_unk_0D8_unk_00 unk_00;
 } Clip_unk_0D8; // size >= 0x4
 
+typedef struct aHOI_Clip_c {
+    /* 0x00 */ UNK_TYPE1 unk_00[0xC];
+    /* 0x0C */ u8 request_mode;
+    /* 0x10 */ struct Actor* master_actor;
+} aHOI_Clip_c; // size > 0x14
 
 typedef struct Clip {
     /* 0x000 */ UNK_TYPE1 unk000[0x40];
     /* 0x040 */ Clip_unk_040* unk_040;
     /* 0x044 */ UNK_TYPE1 unk_044[0x28];
-    /* 0x06C */ Clip_unk_06C* unk_06C;
+    /* 0x06C */ ClipQuestManager* quest_manager;
     /* 0x070 */ UNK_TYPE1 unk_070[0x4];
     /* 0x074 */ Clip_unk_074* unk_074;
     /* 0x078 */ struct WeatherClip* weatherClip;
     /* 0x07C */ UNK_TYPE1 unk_07C[0x4];
     /* 0x080 */ Clip_unk_080* unk_080;
-    /* 0x084 */ UNK_TYPE1 unk_084[0x8];
+    /* 0x084 */ UNK_TYPE1 unk_084[0x4];
+    /* 0x088 */ aHOI_Clip_c* handOverItem_clip;
     /* 0x08C */ Clip_unk_08C* unk_08C;
     /* 0x090 */ Clip_unk_090* unk_090;
     /* 0x094 */ struct ToolClip* toolClip;

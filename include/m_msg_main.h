@@ -6,11 +6,35 @@
 
 struct Game_Play;
 
+enum mMsgFreeStr {
+    /* 0  */ mMsg_FREE_STR0,
+    /* 1  */ mMsg_FREE_STR1,
+    /* 2  */ mMsg_FREE_STR2,
+    /* 3  */ mMsg_FREE_STR3,
+    /* 4  */ mMsg_FREE_STR4,
+    /* 5  */ mMsg_FREE_STR5,
+    /* 6  */ mMsg_FREE_STR6,
+    /* 7  */ mMsg_FREE_STR7,
+    /* 8  */ mMsg_FREE_STR8,
+    /* 9  */ mMsg_FREE_STR9,
+    /* 10 */ mMsg_FREE_STR10,
+    /* 11 */ mMsg_FREE_STR11,
+    /* 12 */ mMsg_FREE_STR12,
+    /* 13 */ mMsg_FREE_STR13,
+    /* 14 */ mMsg_FREE_STR14,
+    /* 15 */ mMsg_FREE_STR15,
+    /* 16 */ mMsg_FREE_STR16,
+    /* 17 */ mMsg_FREE_STR17,
+    /* 18 */ mMsg_FREE_STR18,
+    /* 19 */ mMsg_FREE_STR19,
+    /* 20 */ mMsg_FREE_STR_NUM,
+};
+
 UNK_PTR mMsg_Get_base_window_p(void);
 // void func_8009D200_jp();
 // void func_8009D210_jp();
 // void func_8009D260_jp();
-// void func_8009D274_jp();
+s32 mMsg_Check_main_wait(UNK_PTR msg_p);
 UNK_RET mMsg_Check_not_series_main_wait(UNK_PTR arg0);
 UNK_RET mMsg_Check_main_hide(UNK_PTR arg0);
 // void func_8009D308_jp();
@@ -77,8 +101,8 @@ void mMsg_Set_mail_str(UNK_PTR arg0, s32 arg1, char* str, s32 size);
 // void func_8009E6D4_jp();
 // void func_8009E6F8_jp();
 // void func_8009E8D0_jp();
-// void func_8009E908_jp();
-// void func_8009E94C_jp();
+s32 mMsg_Check_MainNormalContinue(UNK_PTR msg_p);
+s32 mMsg_Check_MainNormal(UNK_PTR msg_p);
 // void func_8009E970_jp();
 // void func_8009E990_jp();
 // void func_8009E9A4_jp();
@@ -86,8 +110,8 @@ void mMsg_Set_mail_str(UNK_PTR arg0, s32 arg1, char* str, s32 size);
 // void func_8009E9C0_jp();
 // void func_8009E9D0_jp();
 // void func_8009E9DC_jp();
-// void func_8009E9E8_jp();
-// void func_8009E9F8_jp();
+void mMsg_Set_LockContinue(UNK_PTR msg_p);
+void mMsg_Unset_LockContinue(UNK_PTR msg_p);
 // void func_8009EA04_jp();
 // void func_8009EA18_jp();
 // void func_8009EA2C_jp();
